@@ -1,52 +1,51 @@
 const lop1 = [ 
-    { 
-      mssv: 'PS0000', 
-      name: 'Nguyen Van A', 
-      avgPoint: 8.9, 
-      avgTraningPoint: 7, 
-      status: 'pass', 
-    }, 
-    { 
-        mssv: 'PD10690', 
-        name: 'Đỗ Văn Minh Tuấn', 
-        avgPoint: 10, 
-        avgTraningPoint: 10, 
-        status: 'pass', 
-      }, 
-    { 
-      mssv: 'PS0001', 
-      name: 'Nguyen Van B', 
-      avgPoint: 6.5, 
+  { 
+    mssv: 'PS0000', 
+    name: 'Nguyen Van A', 
+    avgPoint: 8.9, 
+    avgTraningPoint: 7, 
+    status: 'pass', 
+  }, 
+  { 
+      mssv: 'PD10690', 
+      name: 'Đỗ Văn Minh Tuấn', 
+      avgPoint: 10, 
       avgTraningPoint: 10, 
       status: 'pass', 
-    } 
+    }, 
+  { 
+    mssv: 'PS0001', 
+    name: 'Nguyen Van B', 
+    avgPoint: 6.5, 
+    avgTraningPoint: 10, 
+    status: 'pass', 
+  } 
 ]; 
-   
+ 
 const lop2 = [ 
-    { 
-      mssv: 'PS0002', 
-      name: 'Nguyen Van C', 
-      avgPoint: 5, 
-      avgTraningPoint: 10, 
-      status: 'failed', 
-    }, 
-    { 
-      mssv: 'PS0003', 
-      name: 'Nguyen Van D', 
-      avgPoint: 8, 
-      avgTraningPoint: 10, 
-      status: 'pass', 
-    }, 
-    { 
-      mssv: 'PS0004', 
-      name: 'Nguyen Van E',
-      avgPoint: 7, 
-      avgTraningPoint: 2, 
-      status: 'failed', 
-    }
+  { 
+    mssv: 'PS0002', 
+    name: 'Nguyen Van C', 
+    avgPoint: 5, 
+    avgTraningPoint: 10, 
+    status: 'failed', 
+  }, 
+  { 
+    mssv: 'PS0003', 
+    name: 'Nguyen Van D', 
+    avgPoint: 8, 
+    avgTraningPoint: 10, 
+    status: 'pass', 
+  }, 
+  { 
+    mssv: 'PS0004', 
+    name: 'Nguyen Van E',
+    avgPoint: 7, 
+    avgTraningPoint: 2, 
+    status: 'failed', 
+  }
 ];
-
-// Gộp hai lớp và loại bỏ sinh viên có `status` là `failed`
+// Gộp hai lớp và loại bỏ sinh viên có status là `failed`
 const allStudents = lop1.concat(lop2).filter(student => student?.status !== 'failed');
 console.log('1. Danh sách gộp sinh viên 2 lớp loại bỏ status ở dạng failed:');
 console.table(allStudents);

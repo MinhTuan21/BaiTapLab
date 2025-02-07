@@ -1,9 +1,9 @@
 
 import React from "react";
 
-import Lab3 from "./lab3";
+import DATA from "./lap41";
 
 const App = () => {
-  return <Lab3></Lab3>;
+  return <DATA></DATA>;
 };
 export default App;
