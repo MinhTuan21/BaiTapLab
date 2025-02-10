@@ -9,9 +9,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     padding: 20,
   },
-  title: {
-    
+  title: { 
     fontSize: 24,
+    fontWeight: "bold",
+    marginBottom: 20,
+    textAlign: "center",
     fontWeight: "bold",
     textAlign: "center",
   },
