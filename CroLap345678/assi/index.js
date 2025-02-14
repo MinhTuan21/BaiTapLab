@@ -11,7 +11,7 @@ import {
 import { Ionicons } from "@expo/vector-icons";
 import styles from "./styles";
 
-const Lab43 = ({ navigation }) => {  // Nhận navigation từ React Navigation
+const Lab43 = ({ navigation }) => { 
 
   const [isPasswordShown, setIsPasswordShown] = useState(true);
 
@@ -21,7 +21,7 @@ const Lab43 = ({ navigation }) => {  // Nhận navigation từ React Navigation
       style={styles.container}
     >
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.title}>Hi Welcome MinhTuan! 👋</Text>
+        <Text style={styles.title}>Hi Welcome! 👋</Text>
         <Text style={styles.label}>Email address</Text>
         <TextInput placeholder="Enter your email address" style={styles.input} />
 

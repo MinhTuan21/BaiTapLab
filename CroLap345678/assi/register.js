@@ -7,40 +7,53 @@ import {
   KeyboardAvoidingView,
   ScrollView,
   Platform
+  // Image
 } from "react-native";
-import styles from "./styles";
+import regis from "./regis"; 
 
-const RegisterScreen = ({ navigation }) => {  // Nhận navigation từ React Navigation
+const RegisterScreen = ({ navigation }) => { 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
-      <ScrollView contentContainerStyle={styles.scrollContainer}>
-        <Text style={styles.title}>Create an Account</Text>
+      style={regis.container}>
+      <ScrollView contentContainerStyle={regis.scrollContainer}> 
+      {/* <View style={regis.circleWrapper}> 
+          <Image 
+            source={require('../images/vl.png')} 
+            style={regis.circleImage}
+          />
+        </View>  */}
+        <Text style={regis.title}>Create an Account</Text> 
         <TextInput
           placeholder="Enter your email"
-          style={styles.input}
+          style={regis.input} 
           value={email}
           onChangeText={setEmail}
         />
         <TextInput
           placeholder="Enter your password"
-          style={styles.input}
+          style={regis.input} 
           value={password}
           secureTextEntry
           onChangeText={setPassword}
         />
-        <TouchableOpacity style={styles.LoginButton}>
-          <Text style={styles.forgotPasswordText}>Register</Text>
+         <TextInput
+          placeholder="Re-Enter your password"
+          style={regis.input} 
+          value={password}
+          secureTextEntry
+          onChangeText={setPassword}
+        />
+        <TouchableOpacity style={regis.LoginButton}> 
+          <Text style={regis.forgotPasswordText}>Register</Text>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text style={styles.registerText}>
-            Already have an account? <Text style={styles.registerLink}>Login</Text>
+          <Text style={regis.registerText}>
+            Already have an account? <Text style={regis.registerLink}>Login</Text>
           </Text>
         </TouchableOpacity>
       </ScrollView>
