@@ -1,56 +1,69 @@
 import React from 'react';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-// import Lab43 from './assi';
-// import RegisterScreen from './assi/register'; 
-import Lap51 from './lap5';
-// const Stack = createStackNavigator();
-/*
-const App = () => {
+import { Ionicons } from '@expo/vector-icons';
+import HomeScreen from './lap63/Home';
+import ChatScreen from './lap63/Chat';
+import ArticleScreen from './lap63/Article';
+import HelpScreen from './lap63/Help';
+import SettingsScreen from './lap63/Setting';
+import CustomDrawer from './lap63/CustomDrawer';
+
+const Drawer = createDrawerNavigator();
+
+export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login">
-        <Stack.Screen name="Login" component={Lab43} />
-        <Stack.Screen name="Register" component={RegisterScreen} />
-      </Stack.Navigator>
+      <Drawer.Navigator
+        drawerContent={(props) => <CustomDrawer {...props} />}
+        screenOptions={{ headerShown: false }}
+      >
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="home-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Article"
+          component={ArticleScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="document-text-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Chat"
+          component={ChatScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="chatbubble-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Settings"
+          component={SettingsScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="settings-outline" size={size} color={color} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Help"
+          component={HelpScreen}
+          options={{
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="help-circle-outline" size={size} color={color} />
+            ),
+          }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
-};*/
-const App =()=>{
-  return <Lap51></Lap51>  
 }
-export default App;
-/*lap 5 
-import * as Font from "expo-font";
-import * as SplashScreen from "expo-splash-screen";
-import Lab51 from "./lap5";
-
-SplashScreen.preventAutoHideAsync();
-const loadFonts = async () => {
-  await Font.loadAsync({
-    "Roboto-Regular": require("./assets/font/DarumadropOne-Regular.ttf"),
-  });
-// };
-export default function App() {
-  const [fontLoaded, setFontLoaded] = useState(false);
-
-  useEffect(() => {
-    loadFonts().then(() => {
-      setFontLoaded(true);
-      SplashScreen.hideAsync(); // Ẩn Splash Screen khi font đã load xong
-    });
-  }, []);
-
-  if (!fontLoaded) {
-    return null; // Hiển thị màn hình trắng tạm thời
-  }
-
-  return (
-    <View>
-      <Lab51 />
-    </View>
-  );
-}*/
-
-
-
