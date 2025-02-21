@@ -1,4 +1,4 @@
-import React from 'react';
+/*import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
@@ -66,4 +66,16 @@ export default function App() {
       </Drawer.Navigator>
     </NavigationContainer>
   );
+}*/
+import React from "react";
+import { NavigationContainer } from "@react-navigation/native";
+import BottomTabNavigator from "./lap73/BottomNG";
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <BottomTabNavigator />
+    </NavigationContainer>
+  );
 }
+

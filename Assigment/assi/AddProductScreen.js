@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import styles from "./addPS";
-
-const API_ADD_PRODUCT = "http://172.16.53.132:4000/products/add";
+import { addProduct } from "../api/product";
+// const API_ADD_PRODUCT = "http://172.16.52.92:4000/products/add";
 
 const AddProductScreen = ({ navigation }) => {
   const [name, setName] = useState("");
@@ -19,7 +19,7 @@ const AddProductScreen = ({ navigation }) => {
     const newProduct = { name, price, image, category };
 
     try {
-      const response = await fetch(API_ADD_PRODUCT, {
+      const response = await fetch(addProduct, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newProduct),

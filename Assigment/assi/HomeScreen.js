@@ -4,7 +4,7 @@ import {
 } from "react-native";
 import styles from "./homeSC";
 
-const API_URL = "http://172.16.53.132:4000/products";
+const API_URL = "http://172.16.52.92:4000/products";
 
 const HomeScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);

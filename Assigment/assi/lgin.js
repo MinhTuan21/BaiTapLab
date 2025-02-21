@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1e1e1e", // Màu nền tối
     padding: 20,
   },
   scrollContainer: {
@@ -13,20 +12,17 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    color: "#fff",
     textAlign: "center",
     marginBottom: 20,
   },
   label: {
     fontSize: 16,
     fontWeight: "600",
-    color: "#fff",
     marginBottom: 5,
   },
   input: {
     borderWidth: 1,
-    borderColor: "#888",
-    backgroundColor: "#2a2a2a",
+  
     padding: 12,
     borderRadius: 8,
     color: "#fff",
@@ -36,9 +32,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#888",
     borderRadius: 8,
-    backgroundColor: "#2a2a2a",
   },
   passwordInput: {
     flex: 1,
@@ -74,7 +68,6 @@ const styles = StyleSheet.create({
   },
   registerText: {
     textAlign: "center",
-    color: "#fff",
     fontSize: 16,
     marginTop: 20,
   },

@@ -1,4 +1,4 @@
-const API_URL = "http://172.16.53.132:4000/products";
+const API_URL = "http://172.16.52.92:4000/products";
 
 
 export const addProduct = async (name, description, price, image, rating, category) => {
@@ -39,7 +39,6 @@ export const updateProduct = async (id, updatedData) => {
     }
 };
 
-// Xóa sản phẩm
 export const deleteProduct = async (id) => {
     try {
         const response = await fetch(`${API_URL}/${id}`, {

@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import styles from "./lgin";
 
+// làm call api sản pahamr chi tiet
 const ProductDetailScreen = ({ route, navigation }) => {
   const { product } = route.params;
 

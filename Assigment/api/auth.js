@@ -1,8 +1,8 @@
-const API_URL = "http://172.16.53.132:4000/users";
+const API_URL = "http://172.16.52.92:4000/users";
 
 export const registerUser = async (name, email, password) => {
     try {
-        const response = await    ("http://172.16.53.132:4000/users/register", {  // API_URL đã sửa
+        const response = await    ("http://172.16.52.92:4000/users/register", {  
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, email, password }),
@@ -25,7 +25,7 @@ export const loginUser = async (email, password) => {
     try {
       console.log("Gửi dữ liệu lên API:", { email, password });
   
-      const response = await fetch("http://172.16.53.132:4000/users/login", {
+      const response = await fetch("http://172.16.52.92:4000/users/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
