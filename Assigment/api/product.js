@@ -1,4 +1,4 @@
-const API_URL = "http://172.16.52.92:4000/products";
+const API_URL = "http://172.16.48.50:4000/products";
 
 
 export const addProduct = async (name, description, price, image, rating, category) => {
@@ -38,13 +38,12 @@ export const updateProduct = async (id, updatedData) => {
         return { success: false, message: "Lỗi khi kết nối server!" };
     }
 };
-
 export const deleteProduct = async (id) => {
     try {
-        const response = await fetch(`${API_URL}/${id}`, {
-            method: "DELETE",
-        });
-
+        const response = await fetch(`${API_URL}/${id}`,
+            { method: "DELETE" }
+        ); 
+        
         if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
 
         console.log(`Sản phẩm ID ${id} đã bị xóa!`);
@@ -54,3 +53,4 @@ export const deleteProduct = async (id) => {
         return { success: false, message: "Lỗi khi kết nối server!" };
     }
 };
+

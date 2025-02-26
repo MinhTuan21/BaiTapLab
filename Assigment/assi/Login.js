@@ -9,7 +9,7 @@ import {
   Platform,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
-import styles from "./lgin";
+import styles from "./stylesLogin";
 import { loginUser } from "../api/auth"; 
 
 const Login = ({ navigation }) => { 
@@ -40,7 +40,7 @@ const Login = ({ navigation }) => {
         setErrorMessage("✅ Đăng nhập thành công!");
         console.log("🟢 Chuyển trang Home...");
         
-        navigation.replace("Home", { user: response.user });
+        navigation.navigate("Tab", { user: response.user });
       } else {
         setErrorMessage(response?.message || "❌ Email hoặc mật khẩu không đúng!");
       }
@@ -88,9 +88,13 @@ const Login = ({ navigation }) => {
           <Text style={styles.logins}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.forgotPasswordButton}>
+        <TouchableOpacity 
+          style={styles.forgotPasswordButton} 
+          onPress={() => navigation.navigate("ForgotPassWord")}
+        >
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </TouchableOpacity>
+
 
         <Text style={styles.orLogin}>Or Login with</Text>
         <View style={styles.socialButtons}>

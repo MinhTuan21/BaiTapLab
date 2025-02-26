@@ -8,7 +8,7 @@ import {
   ScrollView,
   Platform,
 } from "react-native";
-import regis from "./regis"; 
+import regis from "./stylesRegister"; 
 import { registerUser } from "../api/auth";
 
 const RegisterScreen = ({ navigation }) => { 
