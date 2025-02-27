@@ -1,4 +1,4 @@
-const API_URL = "http://172.16.48.50:4000/users";
+const API_URL = "http://192.168.1.14:4000/users";
 
 export const registerUser = async (name, email, password) => {
     try {
@@ -56,3 +56,27 @@ export const forgotPassword = async (email) => {
         return { success: false, message: "Lỗi server!" };
     }
 };
+export const resetPassword = async (email, otp, newPassword) => {
+    try {
+        const response = await fetch(`${API_URL}/reset-password`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email, otp, newPassword }),
+        });
+
+        const data = await response.json();
+        console.log("Phản hồi API:", response.status, data);
+
+        if (response.ok) {
+            return data; // Thành công
+        } else {
+            throw new Error(data.message || "Lỗi không xác định");
+        }
+    } catch (error) {
+        console.error("Lỗi gọi API:", error);
+        return { success: false, message: error.message };
+    }
+};
+
+
+

@@ -1,17 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { View, Text, TextInput, TouchableOpacity, Image, Platform } from "react-native";
 import DateTimePicker from "@react-native-community/datetimepicker";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "@react-navigation/native";
-
+import { UserContext } from "./UserContext";
 import styles from "./stylesEditFrofile";
 
 const EditProfileScreen = () => {
   const navigation = useNavigation();
-  const [name, setName] = useState("Minh Tuấn");
-  const [address, setAddress] = useState("Thôn Thanh Chiêm2, Điện Phương, Quảng Nam");
-  const [avatar, setAvatar] = useState("https://i.pravatar.cc/100");
-  const [birthdate, setBirthdate] = useState(new Date());
+  const { userData, setUserData } = useContext(UserContext);
+
+  const [name, setName] = useState(userData.name);
+  const [address, setAddress] = useState(userData.address);
+  const [avatar, setAvatar] = useState(userData.avatar);
+  const [birthdate, setBirthdate] = useState(userData.birthdate);
   const [showPicker, setShowPicker] = useState(false);
 
   const pickImage = async () => {
@@ -28,6 +30,7 @@ const EditProfileScreen = () => {
   };
 
   const handleSave = () => {
+    setUserData({ name, address, avatar, birthdate });
     navigation.goBack();
   };
 

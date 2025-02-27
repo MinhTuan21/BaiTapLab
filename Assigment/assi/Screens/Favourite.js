@@ -25,13 +25,14 @@ const FavouriteScreen = ({ route, navigation }) => {
   const removeFromFavourites = async (itemId) => {
     const updatedFavourites = favourites.filter((item) => item._id !== itemId);
     setFavourites(updatedFavourites);
-
+  
     try {
       await AsyncStorage.setItem("favourites", JSON.stringify(updatedFavourites));
     } catch (error) {
       console.error("Lỗi khi lưu danh sách yêu thích:", error);
     }
   };
+  
 
   return (
     <View style={styles.container}>

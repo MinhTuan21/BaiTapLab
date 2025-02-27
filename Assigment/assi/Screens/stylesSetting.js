@@ -1,19 +1,79 @@
 import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
-  container: { flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: "#f8f9fa" },
-  darkContainer: { backgroundColor: "#121212" }, // Màu nền tối
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#f8f9fa",
+    paddingHorizontal: 20,
+  },
 
-  profileImage: { width: 100, height: 100, borderRadius: 50, marginBottom: 10 },
+  profileImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 15,
+    borderWidth: 2,
+    borderColor: "#ddd",
+  },
 
-  username: { fontSize: 18, fontWeight: "bold", marginBottom: 20, color: "#000" },
-  darkText: { color: "#fff" }, // Màu chữ khi bật nền tối
+  username: {
+    fontSize: 20,
+    fontWeight: "bold",
+    marginBottom: 5,
+    color: "#333",
+  },
 
-  settingItem: { flexDirection: "row", justifyContent: "space-between", width: "80%", marginVertical: 10 },
-  settingText: { fontSize: 16, color: "#000" },
+  address: {
+    fontSize: 16,
+    color: "#666",
+    marginBottom: 5,
+  },
 
-  logoutButton: { backgroundColor: "#e74c3c", padding: 10, borderRadius: 8, marginTop: 20 },
-  darkLogoutButton: { backgroundColor: "#c0392b" }, // Đổi màu nút khi nền tối
+  birthdate: {
+    fontSize: 16,
+    color: "#888",
+    marginBottom: 20,
+  },
 
-  logoutText: { color: "#fff", fontSize: 16, fontWeight: "bold" },
+  editProfileButton: {
+    backgroundColor: "#3498db",
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+    marginBottom: 15,
+  },
+
+  editProfileText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+
+  logoutButton: {
+    backgroundColor: "#e74c3c",
+    paddingVertical: 12,
+    paddingHorizontal: 25,
+    borderRadius: 8,
+  },
+
+  logoutText: {
+    color: "#fff",
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+
+  // Dark mode styles
+  darkContainer: {
+    backgroundColor: "#121212",
+  },
+
+  darkText: {
+    color: "#fff",
+  },
+
+  darkLogoutButton: {
+    backgroundColor: "#c0392b",
+  },
 });

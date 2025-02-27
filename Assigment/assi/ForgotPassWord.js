@@ -9,23 +9,36 @@ import {
 } from "react-native";
 import { forgotPassword } from "../api/auth";
 
-const ForgotPasswordScreen = () => {
+const ForgotPasswordScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
 
+  const validateEmail = (email) => {
+    return /\S+@\S+\.\S+/.test(email);
+  };
+  
   const handleForgotPassword = async () => {
     if (!email) {
       Alert.alert("Lỗi", "Vui lòng nhập email!");
       return;
     }
-
+  
+    if (!validateEmail(email)) {
+      Alert.alert("Lỗi", "Email không hợp lệ!");
+      return;
+    }
+  
     try {
       const response = await forgotPassword(email);
-      Alert.alert(" Thành công", response.message);
+      Alert.alert("Thành công", response.message, [
+        {
+          text: "OK",
+          onPress: () => navigation.navigate("ResetPassWord", { email }),
+        },
+      ]);
     } catch (error) {
-      Alert.alert(" Lỗi", "Không thể gửi OTP, vui lòng thử lại sau.");
+      Alert.alert("Lỗi", error.message || "Không thể gửi OTP, vui lòng thử lại sau.");
     }
   };
-
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Quên mật khẩu?</Text>

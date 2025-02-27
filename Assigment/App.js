@@ -11,6 +11,14 @@ import HomeTabs from './assi/HomeTab';
 import PaymentScreen from "./assi/Screens/Payment"
 import ForgotPasswordScreen from './assi/ForgotPassWord';
 import EditProfileScreen from './assi/Screens/EditFrofile';
+import ResetPasswordScreen from './assi/ResetPassWord';
+import { UserProvider } from "./assi/Screens/UserContext";
+import SettingsScreen from "./assi/Screens/Setting";
+import MomoPaymentScreen from './assi/Screens/MomoPaymentScreen';
+import BankPaymentScreen from './assi/Screens/BankPaymentScreen';
+import InstallmentPaymentScreen from './assi/Screens/InstallmentPaymentScreen';
+
+
 
 const Stack = createStackNavigator();
 
@@ -26,19 +34,26 @@ const App = () => {
   }, []);
 
   return (
+    <UserProvider>
     <NavigationContainer>
       <Stack.Navigator initialRouteName={isLoggedIn ? "Tab": "Login"}>
         <Stack.Screen name="Tab" component={HomeTabs} options={{headerShown: false}}/>
         <Stack.Screen name="Login" component={Login} options={{ headerShown: false }} />
         <Stack.Screen name="Register" component={RegisterScreen} options={{ headerShown: false }} />
-        <Stack.Screen name="ForgotPassWord" component={ForgotPasswordScreen} options={{ headerShown: false }} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="ProductDetail" component={ProductDetailScreen} options={{ headerShown: false }} />
         <Stack.Screen name="AddProductScreen" component={AddProductScreen} options={{ headerShown: false }} /> 
         <Stack.Screen name="Payment" component={PaymentScreen} options={{ headerShown:false}}/>
         <Stack.Screen name="EditFrofile" component={EditProfileScreen} options={{ headerShown: false }}/>
+        <Stack.Screen name="ForgotPassWord" component={ForgotPasswordScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="ResetPassWord" component={ResetPasswordScreen} options={{ headerShown: false }} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="MomoPayment" component={MomoPaymentScreen} options={{ title: "Thanh Toán Momo" }} />
+        <Stack.Screen name="BankPayment" component={BankPaymentScreen} options={{ title: "Thanh Toán Ngân Hàng" }} />
+        <Stack.Screen name="InstallmentPayment" component={InstallmentPaymentScreen} options={{ title: "Trả Góp" }} />
       </Stack.Navigator>
     </NavigationContainer>
+    </UserProvider>
   );
 };
 

@@ -4,7 +4,7 @@ import { Ionicons } from "@expo/vector-icons";
 import styles from "./stylesHomeScreen";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const API_URL = "http://172.16.48.50:4000/products";
+const API_URL = "http://192.168.1.14:4000/products";
 
 const HomeScreen = ({ navigation }) => {
   const [products, setProducts] = useState([]);
@@ -113,7 +113,7 @@ const HomeScreen = ({ navigation }) => {
           onPress={() => navigation.navigate("Favourite", { favourites })}
         >
           <Ionicons name="heart" size={24} color="red" />
-          <Text style={styles.navText}>Favourites</Text>
+          <Text style={styles.navText}></Text>
         </TouchableOpacity>
 
         <TouchableOpacity 
@@ -121,7 +121,7 @@ const HomeScreen = ({ navigation }) => {
           onPress={() => navigation.navigate("Cart", { cart })} 
         >
           <Ionicons name="cart" size={24} color="green" />
-          <Text style={styles.navText}>Cart</Text>
+          <Text style={styles.navText}></Text>
         </TouchableOpacity>
       </View>
 

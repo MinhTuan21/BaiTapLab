@@ -1,4 +1,4 @@
-const API_URL_DETAILS = "http://172.16.48.50:4000/productDs";
+const API_URL_DETAILS = "http://192.168.1.14:4000/productDs";
 export const addProductDetails = async (productId, specifications, stock, manufacturer, warranty, additionalInfo) => {
     try {
         const response = await fetch(`${API_URL_DETAILS}/add`, {

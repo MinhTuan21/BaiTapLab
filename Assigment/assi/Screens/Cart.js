@@ -9,7 +9,7 @@ const CartScreen = ({ route, navigation }) => {
   const [selectedItems, setSelectedItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
-  // Hợp nhất giỏ hàng để tránh trùng lặp sản phẩm
+
   const mergeCart = (cartItems) => {
     const cartMap = new Map();
     cartItems.forEach((item) => {
@@ -45,15 +45,14 @@ const CartScreen = ({ route, navigation }) => {
     }
   }, [route.params?.cart]);
 
-  // Cập nhật tổng tiền chỉ với sản phẩm đã chọn
+  
   useEffect(() => {
     const total = cart
-      .filter(item => selectedItems.includes(item._id)) // Chỉ lấy sản phẩm đã chọn
+      .filter(item => selectedItems.includes(item._id)) 
       .reduce((sum, item) => sum + item.price * item.quantity, 0);
     setTotalPrice(total);
   }, [cart, selectedItems]);
 
-  // Xóa sản phẩm khỏi giỏ hàng
   const handleRemoveItem = async (id) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.filter((item) => item._id !== id);
@@ -62,7 +61,6 @@ const CartScreen = ({ route, navigation }) => {
     });
   };
 
-  // Cập nhật số lượng sản phẩm
   const handleQuantityChange = async (id, amount) => {
     setCart((prevCart) => {
       const updatedCart = prevCart.map((item) =>
@@ -73,14 +71,13 @@ const CartScreen = ({ route, navigation }) => {
     });
   };
 
-  // Chọn hoặc bỏ chọn sản phẩm
+
   const handleSelectItem = (id) => {
     setSelectedItems((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
 
-  // Thanh toán sản phẩm đã chọn
   const handleCheckout = () => {
     const itemsToCheckout = cart.filter((item) => selectedItems.includes(item._id));
   
@@ -104,7 +101,7 @@ const CartScreen = ({ route, navigation }) => {
             data={cart}
             renderItem={({ item }) => (
               <View style={styles.cartItem}>
-                {/* Chọn sản phẩm */}
+
                 <TouchableOpacity onPress={() => handleSelectItem(item._id)}>
                   <Ionicons
                     name={selectedItems.includes(item._id) ? "checkbox-outline" : "square-outline"}
@@ -113,7 +110,6 @@ const CartScreen = ({ route, navigation }) => {
                   />
                 </TouchableOpacity>
 
-                {/* Ảnh sản phẩm */}
                 <Image source={{ uri: item.image }} style={styles.productImage} />
 
                 <View style={styles.textContainer}>
@@ -130,7 +126,6 @@ const CartScreen = ({ route, navigation }) => {
                   </View>
                 </View>
 
-                {/* Xóa sản phẩm */}
                 <TouchableOpacity onPress={() => handleRemoveItem(item._id)}>
                   <Ionicons name="trash-outline" size={24} color="red" />
                 </TouchableOpacity>
@@ -139,14 +134,13 @@ const CartScreen = ({ route, navigation }) => {
             keyExtractor={(item) => item._id}
           />
 
-          {/* Hiển thị tổng tiền khi có sản phẩm được chọn */}
           {selectedItems.length > 0 && (
             <View style={styles.totalContainer}>
               <Text style={styles.totalText}>Tổng tiền: {totalPrice.toLocaleString()} VNĐ</Text>
             </View>
           )}
 
-          {/* Nút Thanh Toán */}
+         
           {selectedItems.length > 0 && (
             <TouchableOpacity style={styles.checkoutButton} onPress={handleCheckout}>
               <Text style={styles.checkoutText}>Thanh Toán</Text>

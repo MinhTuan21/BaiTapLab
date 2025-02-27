@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -8,15 +8,36 @@ import {
   ScrollView,
   Platform,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage"; // Import AsyncStorage
 import { Ionicons } from "@expo/vector-icons";
+import CheckBox from "expo-checkbox";
 import styles from "./stylesLogin";
-import { loginUser } from "../api/auth"; 
+import { loginUser } from "../api/auth";
 
-const Login = ({ navigation }) => { 
+const Login = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isPasswordShown, setIsPasswordShown] = useState(true);
   const [errorMessage, setErrorMessage] = useState("");
+  const [rememberPassword, setRememberPassword] = useState(false);
+
+  useEffect(() => {
+    const loadLoginData = async () => {
+      try {
+        const savedEmail = await AsyncStorage.getItem("savedEmail");
+        const savedPassword = await AsyncStorage.getItem("savedPassword");
+        if (savedEmail && savedPassword) {
+          setEmail(savedEmail);
+          setPassword(savedPassword);
+          setRememberPassword(true);
+        }
+      } catch (error) {
+        console.error("Lỗi khi lấy dữ liệu đăng nhập:", error);
+      }
+    };
+
+    loadLoginData();
+  }, []);
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -31,15 +52,24 @@ const Login = ({ navigation }) => {
       setErrorMessage("⚠️ Mật khẩu phải có ít nhất 6 ký tự!");
       return;
     }
-  
+
     try {
       const response = await loginUser(email, password);
       console.log("Phản hồi từ API:", response);
-  
+
       if (response?.token) {
         setErrorMessage("✅ Đăng nhập thành công!");
+
+      
+        if (rememberPassword) {
+          await AsyncStorage.setItem("savedEmail", email);
+          await AsyncStorage.setItem("savedPassword", password);
+        } else {
+          await AsyncStorage.removeItem("savedEmail");
+          await AsyncStorage.removeItem("savedPassword");
+        }
+
         console.log("🟢 Chuyển trang Home...");
-        
         navigation.navigate("Tab", { user: response.user });
       } else {
         setErrorMessage(response?.message || "❌ Email hoặc mật khẩu không đúng!");
@@ -51,16 +81,11 @@ const Login = ({ navigation }) => {
   };
 
   return (
-    <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
-      style={styles.container}
-    >
+    <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <Text style={styles.title}>Hi Welcome! 👋</Text>
 
-        {errorMessage ? (
-          <Text style={{ color: "red", textAlign: "center", marginBottom: 10 }}>{errorMessage}</Text>
-        ) : null}
+        {errorMessage ? <Text style={{ color: "red", textAlign: "center", marginBottom: 10 }}>{errorMessage}</Text> : null}
 
         <Text style={styles.label}>Email address</Text>
         <TextInput
@@ -84,17 +109,23 @@ const Login = ({ navigation }) => {
           </TouchableOpacity>
         </View>
 
+        
+        <View style={styles.rememberContainer}>
+          <CheckBox
+            value={rememberPassword}
+            onValueChange={setRememberPassword}
+            color={rememberPassword ? "#4630EB" : undefined}
+          />
+          <Text style={styles.rememberText}>Remember Password</Text>
+        </View>
+
         <TouchableOpacity style={styles.LoginButton} onPress={handleLogin}>
           <Text style={styles.logins}>Login</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.forgotPasswordButton} 
-          onPress={() => navigation.navigate("ForgotPassWord")}
-        >
+        <TouchableOpacity style={styles.forgotPasswordButton} onPress={() => navigation.navigate("ForgotPassWord")}>
           <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
         </TouchableOpacity>
-
 
         <Text style={styles.orLogin}>Or Login with</Text>
         <View style={styles.socialButtons}>

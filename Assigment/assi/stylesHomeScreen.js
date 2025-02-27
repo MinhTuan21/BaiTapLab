@@ -5,6 +5,11 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: "#f8f8f8",
+  },navButtons:{
+    flexDirection: "row",  
+    alignItems: "center", 
+    justifyContent: "flex-start", 
+    marginBottom: 10
   },
   title: {
     marginTop: 20,

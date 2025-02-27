@@ -79,7 +79,7 @@ const AddProductScreen = ({ navigation }) => {
     console.log("Dữ liệu gửi đi:", formData);
 
     try {
-        const response = await fetch("http://172.16.48.50/products/add", {
+      const response = await fetch("http://192.168.1.14:4000/products/add", {
             method: "POST",
             headers: {
                 "Content-Type": "multipart/form-data",  
@@ -121,10 +121,7 @@ const AddProductScreen = ({ navigation }) => {
       />
       <TextInput style={styles.input} placeholder="Giá sản phẩm" keyboardType="numeric" value={price} onChangeText={setPrice} />
 
-      {/* Chọn mô tả sản phẩm từ danh sách */}
-     
-
-      {/* Chọn ảnh */}
+    
       <TouchableOpacity style={styles.imagePicker} onPress={pickImage}>
         <Text style={styles.imagePickerText}>Chọn ảnh từ thư viện</Text>
       </TouchableOpacity>
@@ -134,7 +131,6 @@ const AddProductScreen = ({ navigation }) => {
 
       {image && <Image source={{ uri: image }} style={styles.imagePreview} />}
 
-      {/* Picker chọn danh mục */}
       <View style={styles.pickerContainer}>
         <Picker selectedValue={category} onValueChange={(itemValue) => setCategory(itemValue)} style={styles.picker}>
           <Picker.Item label="Chọn danh mục" value="" />
@@ -144,7 +140,7 @@ const AddProductScreen = ({ navigation }) => {
         </Picker>
       </View>
 
-      {/* Picker chọn đánh giá */}
+     
       <View style={styles.pickerContainer}>
         <Picker selectedValue={rating} onValueChange={(itemValue) => setRating(itemValue)} style={styles.picker}>
           <Picker.Item label="Chọn đánh giá (1 - 5 sao)" value="" />

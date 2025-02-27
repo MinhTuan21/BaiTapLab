@@ -1,9 +1,10 @@
-const API_URL = "http://172.16.48.50:4000/products";
+const API_URL = "http://192.168.1.14:4000/products";
 
 
 export const addProduct = async (name, description, price, image, rating, category) => {
     try {
-        const response = await fetch(`${API_URL}`, {
+        const response = await fetch("http://192.168.1.14:4000/products/add", {
+
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ name, description, price, image, rating, category }),
