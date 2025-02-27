@@ -67,15 +67,29 @@ export default function App() {
     </NavigationContainer>
   );
 }*/
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import BottomTabNavigator from "./lap73/BottomNG";
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <BottomTabNavigator />
-    </NavigationContainer>
-  );
-}
+// import { NavigationContainer } from "@react-navigation/native";
+// import BottomTabNavigator from "./lap73/BottomNG";
+
+// export default function App() {
+//   return (
+//     <NavigationContainer>
+//       <BottomTabNavigator />
+//     </NavigationContainer>
+//   );
+// }
+import React from "react";
+import { View } from "react-native";
+import InformationList from "./lap83/index";
+
+const App = () => {
+    return (
+        <View style={{ flex: 1, padding: 20 }}> 
+            <InformationList />
+        </View>
+    );
+};
+
+export default App;
+
 
